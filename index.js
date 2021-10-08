@@ -7,18 +7,11 @@ let deadline = new Date(2022, 0, 1);
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  const [timeInput, dateInput] = form.elements;
-  console.log(timeInput.value);
+  const [title, timeInput, dateInput] = form.elements;
   const hour = parseInt(timeInput.value[0] + timeInput.value[1]);
   const minute = parseInt(timeInput.value[3] + timeInput.value[4]);
 
-  console.log(hour);
-  console.log(minute);
-  console.log(new Date(dateInput.value));
   const date = new Date(dateInput.value);
-  console.log(date.getFullYear());
-  console.log(date.getMonth());
-  console.log(date.getDate());
   deadline = new Date(
     date.getFullYear(),
     date.getMonth(),
@@ -26,9 +19,19 @@ form.addEventListener("submit", (e) => {
     hour,
     minute
   );
+
+  data.push({
+    id: data.length,
+    deadline: deadline,
+    title: title.value,
+  });
+
+  form.reset();
+
+  console.log(data);
 });
 
-const renderTime = (time, deadline) => {
+const renderTime = (id, time, title, deadline) => {
   const ms = deadline - time;
   const s = ms / 1000;
   const seconds = Math.round(s) % 60;
@@ -39,13 +42,18 @@ const renderTime = (time, deadline) => {
   const d = h / 24;
   const days = Math.round(d);
   return `
- time till deadline: ${days} days ${hours} hours ${minutes} minutes ${seconds} seconds
+ <div id="renderTime${id}">time till ${title}: ${days} days ${hours} hours ${minutes} minutes ${seconds} seconds</div>
  `;
 };
 
 const run = () => {
   const time = new Date();
-  app.innerText = renderTime(time, deadline);
+  console.log(
+    data.map(({ id, title, deadline }) => renderTime(id, time, title, deadline))
+  );
+  app.innerHTML = data
+    .map(({ id, title, deadline }) => renderTime(id, time, title, deadline))
+    .join("");
   window.requestAnimationFrame(run);
 };
 
