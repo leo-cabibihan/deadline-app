@@ -34,13 +34,13 @@ form.addEventListener("submit", (e) => {
 const renderTime = (id, time, title, deadline) => {
   const ms = deadline - time;
   const s = ms / 1000;
-  const seconds = Math.round(s) % 60;
+  const seconds = Math.floor(s) % 60;
   const m = s / 60;
-  const minutes = Math.round(m) % 60;
+  const minutes = Math.floor(m) % 60;
   const h = m / 60;
-  const hours = Math.round(h) % 60;
+  const hours = Math.floor(h) % 24;
   const d = h / 24;
-  const days = Math.round(d);
+  const days = Math.floor(d);
   return `
  <div id="renderTime${id}">time till ${title}: ${days} days ${hours} hours ${minutes} minutes ${seconds} seconds</div>
  `;
