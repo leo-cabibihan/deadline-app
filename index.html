@@ -5,9 +5,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"
+    />
   </head>
   <body>
     <div id="app"></div>
+    <form action="">
+      <label for="appt-time">Time </label>
+      <input
+        id="appt-time"
+        type="time"
+        name="appt-time"
+        value="12:00"
+        min="12:00"
+        max="24:00"
+        required
+        pattern="[0-9]{2}:[0-9]{2}"
+      />
+      <label for="start">Start date:</label>
+
+      <input
+        type="date"
+        id="start"
+        name="trip-start"
+        value="2021-10-8"
+        min="2020-01-01"
+        max="2030-12-31"
+        required
+      />
+      <input type="submit" />
+    </form>
+
     <script src="index.js"></script>
   </body>
 </html>
