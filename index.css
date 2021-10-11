@@ -1,0 +1,26 @@
+html,
+body,
+pre,
+code,
+kbd,
+samp {
+  font-family: "Press Start 2P", cursive;
+}
+
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+.margin-top-8 {
+  margin-top: 8px;
+}
+
+.container {
+  max-width: 720px;
+  padding: 0 16px;
+  margin: 0 auto;
+}

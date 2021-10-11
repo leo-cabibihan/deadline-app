@@ -23,6 +23,10 @@ const data = [
 ];
 ```
 
+### add nes css, do ur own layout
+
+### allow inputting a number less than something
+
 ### save deadlines to local storage
 
 each element can also be removed

@@ -42,7 +42,10 @@ const renderTime = (id, time, title, deadline) => {
   const d = h / 24;
   const days = Math.floor(d);
   return `
- <div id="renderTime${id}">time till ${title}: ${days} days ${hours} hours ${minutes} minutes ${seconds} seconds</div>
+  <div class="nes-container with-title margin-top-8" id="renderTime${id}"> 
+    <p class="title"> ${title}</p>
+    <p> ${days} days ${hours} hours ${minutes} minutes ${seconds} seconds </p>
+  </div>
  `;
 };
 
