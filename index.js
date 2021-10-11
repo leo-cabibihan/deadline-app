@@ -1,9 +1,17 @@
 const app = document.getElementById("app");
 
+console.log(localforage);
+
 const form = document.forms[0];
 
 let data = [];
-let deadline = new Date(2022, 0, 1);
+
+window.addEventListener("load", () => {
+  localforage.getItem("data").then((value) => {
+    console.log(value);
+    if (value !== null) data = value;
+  });
+});
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -20,15 +28,24 @@ form.addEventListener("submit", (e) => {
     minute
   );
 
-  data.push({
-    id: data.length,
-    deadline: deadline,
-    title: title.value,
-  });
+  console.log(title, timeInput, dateInput);
+  console.log(title.value, timeInput.value, dateInput.value);
+
+  localforage
+    .setItem(
+      "data",
+      data.concat({
+        id: data.length,
+        deadline: deadline,
+        title: title.value,
+      })
+    )
+    .then((value) => {
+      console.log(value);
+      data = value;
+    });
 
   form.reset();
-
-  console.log(data);
 });
 
 const renderTime = (id, time, title, deadline) => {
@@ -51,9 +68,7 @@ const renderTime = (id, time, title, deadline) => {
 
 const run = () => {
   const time = new Date();
-  console.log(
-    data.map(({ id, title, deadline }) => renderTime(id, time, title, deadline))
-  );
+
   app.innerHTML = data
     .map(({ id, title, deadline }) => renderTime(id, time, title, deadline))
     .join("");
