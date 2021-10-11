@@ -15,8 +15,8 @@ html {
 *:after {
   box-sizing: inherit;
 }
-.margin-top-8 {
-  margin-top: 8px;
+.margin-top-16 {
+  margin-top: 16px;
 }
 
 .container {

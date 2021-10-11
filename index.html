@@ -16,12 +16,12 @@
   <body>
     <main class="container">
       <div id="app"></div>
-      <form>
-        <div class="nes-field">
+      <form action="">
+        <div class="nes-field margin-top-16">
           <label for="title">Title</label>
           <input type="text" id="title" required class="nes-input" />
         </div>
-        <div class="nes-field">
+        <div class="nes-field margin-top-16">
           <label for="appt-time">Time </label>
           <input
             id="appt-time"
@@ -33,7 +33,7 @@
             class="nes-input"
           />
         </div>
-        <div class="nes-field">
+        <div class="nes-field margin-top-16">
           <label for="start">Start date:</label>
 
           <input
@@ -45,9 +45,10 @@
             class="nes-input"
           />
         </div>
-        <input type="submit" class="nes-btn" />
+        <input type="submit" class="nes-btn margin-top-16" />
       </form>
     </main>
+    <script src="./localforage.min.js"></script>
 
     <script src="index.js"></script>
   </body>
